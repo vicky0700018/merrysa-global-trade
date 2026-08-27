@@ -37,7 +37,7 @@ export function Hero() {
     );
   }
 
-  const active = slides[Math.min(index, slides.length - 1)];
+  const active = slides[Math.min(index, slides.length - 1)]!;
   const target = CTA_TARGETS[active.cta] ?? "/contact";
 
   return (
