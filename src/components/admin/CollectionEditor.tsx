@@ -17,8 +17,8 @@ export function AdminPanelShell({
   children,
 }: {
   title: string;
-  description?: string;
-  action?: React.ReactNode;
+  description?: string | undefined;
+  action?: React.ReactNode | undefined;
   children: React.ReactNode;
 }) {
   return (
@@ -71,6 +71,7 @@ export function CollectionEditor<T extends WithFlags>({
     if (target < 0 || target >= items.length) return;
     const next = [...items];
     const [moved] = next.splice(index, 1);
+    if (!moved) return;
     next.splice(target, 0, moved);
     onChange(next.map((item, i) => ({ ...item, order: i + 1 })));
   };
