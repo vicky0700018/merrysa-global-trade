@@ -529,7 +529,7 @@ function PortfolioPanel() {
         id: makeId("pf"),
         title: "New trade category",
         category: "Wholesale",
-        tradeType: TRADE_TYPES[0],
+        tradeType: "Wholesale Supply",
         description: "Describe this demo trade category.",
         image: "",
         enabled: true,

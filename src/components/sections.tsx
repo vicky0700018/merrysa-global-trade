@@ -241,19 +241,23 @@ export function CapabilitiesSection() {
                 <path d="M300 130 L360 140 L395 185 L350 200 L305 170 Z" />
                 <path d="M400 190 L460 185 L470 225 L415 230 Z" />
               </g>
-              {nodes.slice(1).map((node) => (
-                <path
-                  key={`line-${node.name}`}
-                  d={`M${nodes[0].x} ${nodes[0].y} Q ${(nodes[0].x + node.x) / 2} ${
-                    Math.min(nodes[0].y, node.y) - 45
-                  } ${node.x} ${node.y}`}
-                  fill="none"
-                  stroke="oklch(0.728 0.138 89.7)"
-                  strokeWidth="1.4"
-                  strokeDasharray="6 6"
-                  style={{ animation: "trade-dash 2.4s linear infinite" }}
-                />
-              ))}
+              {nodes.slice(1).map((node) => {
+                const origin = nodes[0]!;
+                return (
+                  <path
+                    key={`line-${node.name}`}
+                    d={`M${origin.x} ${origin.y} Q ${(origin.x + node.x) / 2} ${
+                      Math.min(origin.y, node.y) - 45
+                    } ${node.x} ${node.y}`}
+                    fill="none"
+                    stroke="oklch(0.728 0.138 89.7)"
+                    strokeWidth="1.4"
+                    strokeDasharray="6 6"
+                    style={{ animation: "trade-dash 2.4s linear infinite" }}
+                  />
+                );
+              })}
+
               {nodes.map((node, i) => (
                 <g key={node.name}>
                   <circle
